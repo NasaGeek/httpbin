@@ -941,7 +941,7 @@ def delete_cookies():
     return r
 
 
-@app.route("/basic-auth/<user>/<passwd>")
+@app.route("/basic-auth/<user>/<passwd>", methods=["GET", "POST", "PUT", "DELETE", "PATCH", "TRACE"])
 def basic_auth(user="user", passwd="passwd"):
     """Prompts the user for authorization using HTTP Basic Auth.
     ---
@@ -969,7 +969,7 @@ def basic_auth(user="user", passwd="passwd"):
     return jsonify(authenticated=True, user=user)
 
 
-@app.route("/hidden-basic-auth/<user>/<passwd>")
+@app.route("/hidden-basic-auth/<user>/<passwd>", methods=["GET", "POST", "PUT", "DELETE", "PATCH", "TRACE"])
 def hidden_basic_auth(user="user", passwd="passwd"):
     """Prompts the user for authorization using HTTP Basic Auth.
     ---
@@ -996,7 +996,7 @@ def hidden_basic_auth(user="user", passwd="passwd"):
     return jsonify(authenticated=True, user=user)
 
 
-@app.route("/bearer")
+@app.route("/bearer", methods=["GET", "POST", "PUT", "DELETE", "PATCH", "TRACE"])
 def bearer_auth():
     """Prompts the user for authorization using bearer authentication.
     ---
@@ -1027,7 +1027,7 @@ def bearer_auth():
     return jsonify(authenticated=True, token=token)
 
 
-@app.route("/digest-auth/<qop>/<user>/<passwd>")
+@app.route("/digest-auth/<qop>/<user>/<passwd>", methods=["GET", "POST", "PUT", "DELETE", "PATCH", "TRACE"])
 def digest_auth_md5(qop=None, user="user", passwd="passwd"):
     """Prompts the user for authorization using Digest Auth.
     ---
@@ -1055,7 +1055,7 @@ def digest_auth_md5(qop=None, user="user", passwd="passwd"):
     return digest_auth(qop, user, passwd, "MD5", "never")
 
 
-@app.route("/digest-auth/<qop>/<user>/<passwd>/<algorithm>")
+@app.route("/digest-auth/<qop>/<user>/<passwd>/<algorithm>", methods=["GET", "POST", "PUT", "DELETE", "PATCH", "TRACE"])
 def digest_auth_nostale(qop=None, user="user", passwd="passwd", algorithm="MD5"):
     """Prompts the user for authorization using Digest Auth + Algorithm.
     ---
@@ -1088,7 +1088,7 @@ def digest_auth_nostale(qop=None, user="user", passwd="passwd", algorithm="MD5")
     return digest_auth(qop, user, passwd, algorithm, "never")
 
 
-@app.route("/digest-auth/<qop>/<user>/<passwd>/<algorithm>/<stale_after>")
+@app.route("/digest-auth/<qop>/<user>/<passwd>/<algorithm>/<stale_after>", methods=["GET", "POST", "PUT", "DELETE", "PATCH", "TRACE"])
 def digest_auth(
     qop=None, user="user", passwd="passwd", algorithm="MD5", stale_after="never"
 ):
